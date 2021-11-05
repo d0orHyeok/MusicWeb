@@ -1,0 +1,25 @@
+.header {
+    color: var(--fontColor-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    margin: 0 3rem;
+}
+
+.logo a {
+    color: var(--fontColor-header);
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav a {
+    color: var(--fontColor-header);
+    text-decoration: none;
+    margin: 1rem;
+}
