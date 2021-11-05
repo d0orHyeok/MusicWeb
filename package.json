@@ -1,0 +1,30 @@
+{
+    "name": "musicweb",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server/index.js",
+        "backend": "nodemon server/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/d0orHyeok/MusicWeb.git"
+    },
+    "author": "JangHyeok Kim",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/d0orHyeok/MusicWeb/issues"
+    },
+    "homepage": "https://github.com/d0orHyeok/MusicWeb#readme",
+    "dependencies": {
+        "cookie-parser": "^1.4.5",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "mongoose": "^6.0.12"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.14"
+    }
+}
