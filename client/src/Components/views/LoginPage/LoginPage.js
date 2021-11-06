@@ -1,5 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../../_actions/user_action';
 
 import styles from './LoginPage.module.css';
 import classNames from 'classnames/bind';
@@ -7,17 +9,53 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function LoginPage() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [Email, setEmail] = useState('');
+    const [Password, setPassword] = useState('');
+
+    const emailOnChangeHandler = e => {
+        setEmail(e.currentTarget.value);
+    };
+
+    const passwordOnChangeHandler = e => {
+        setPassword(e.currentTarget.value);
+    };
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        let body = {
+            email: Email,
+            password: Password,
+        };
+
+        dispatch(loginUser(body)).then(res => {
+            if (res.payload.loginSuccess) {
+                navigate('/');
+            } else {
+                alert('Failed to login');
+            }
+        });
+    };
+
     return (
         <section className={cx('login-page')}>
             <div className={cx('container')}>
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className={cx('title')}>Login</div>
                     <div className={cx('input-box', 'underline')}>
-                        <input type="email" placeholder="Enter Your Email" required />
+                        <input onChange={emailOnChangeHandler} type="email" placeholder="Enter Your Email" required />
                         <div className={cx('underline')}></div>
                     </div>
                     <div className={cx('input-box')}>
-                        <input type="password" placeholder="Enter Your Password" required />
+                        <input
+                            onChange={passwordOnChangeHandler}
+                            type="password"
+                            placeholder="Enter Your Password"
+                            required
+                        />
                         <div className={cx('underline')}></div>
                     </div>
                     <div className={cx('input-box', 'button')}>
