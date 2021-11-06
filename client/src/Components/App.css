@@ -1,10 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
 :root {
-    --fontColor-header: black;
+    --header-height: 100px;
+    --color-1: #eeecf4;
+    --color-2: #dce1e7;
+    --color-3: #b0bcce;
+    --color-4: #627c9a;
+    --color-4h: #3b6492;
+    --color-5: #1b212f;
+    --color-point: #d6ddb6;
+    --mainpage-heignt: calc(100vh - var(--header-height));
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
+    background-color: var(--color-2);
+    color: var(--color-5);
     width: 100vw;
     font-family: 'Nanum Gothic', sans-serif;
+}
+
+Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+
+main {
+    position: relative;
+    top: var(--header-height);
+    height: var(--mainpage-heignt);
 }

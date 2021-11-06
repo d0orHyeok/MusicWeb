@@ -7,23 +7,29 @@ import styles from './Header.module.css';
 const cx = classNames.bind(styles);
 
 function Header() {
-    const homeUrl = 'http://localhost:3000';
-
     return (
         <header className={cx('header')}>
-            <h1 className={cx('logo')}>
-                <Link to={homeUrl}>Furi</Link>
+            <h1>
+                <Link to="/" className={cx('logo')}>
+                    Furi
+                </Link>
             </h1>
             <nav>
                 <ul className={cx('nav')}>
                     <li>
-                        <Link to="/playlists">Playlists</Link>
+                        <Link to="/playlists" className={cx('nav-link')}>
+                            Playlists
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/register">Sing Up</Link>
+                        <Link to="/register" className={cx('nav-link')}>
+                            Sing Up
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/login">Sing In</Link>
+                        <Link to="/login" className={cx('nav-link')}>
+                            Sing In
+                        </Link>
                     </li>
                 </ul>
             </nav>
