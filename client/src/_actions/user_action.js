@@ -21,7 +21,7 @@ export function loginUser(data) {
 }
 
 export function logoutUser(data) {
-    const req = Axios.get(`${USER_SERVER}/login`, data).then(res => (res = res.data));
+    const req = Axios.get(`${USER_SERVER}/logout`, data).then(res => (res = res.data));
 
     return {
         type: LOGOUT_USER,
@@ -30,7 +30,7 @@ export function logoutUser(data) {
 }
 
 export function auth(data) {
-    const req = Axios.get(`${USER_SERVER}/login`, data).then(res => (res = res.data));
+    const req = Axios.get(`${USER_SERVER}/auth`, data).then(res => (res = res.data));
 
     return {
         type: AUTH_USER,

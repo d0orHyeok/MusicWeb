@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Auth from '../hoc/auth';
 
 import Header from './views/Header/Header';
 import LandingPage from './views/LangdingPage/LandingPage';
@@ -8,6 +9,7 @@ import RegisterPage from './views/RegisterPage/RegisterPage';
 import PlaylistsPage from './views/PlaylistsPage/PlaylistsPage';
 
 import './reset.css';
+import './App.css';
 
 function App() {
     return (
@@ -16,10 +18,10 @@ function App() {
                 <Header />
                 <main>
                     <Routes>
-                        <Route path="/" element={<LandingPage />} />
-                        <Route path="login" element={<LoginPage />} />
-                        <Route path="register" element={<RegisterPage />} />
-                        <Route path="playlists" element={<PlaylistsPage />} />
+                        <Route path="/" element={React.createElement(Auth(LandingPage, null))} />
+                        <Route path="login" element={React.createElement(Auth(LoginPage, false))} />
+                        <Route path="register" element={React.createElement(Auth(RegisterPage, false))} />
+                        <Route path="playlists" element={React.createElement(Auth(PlaylistsPage, true))} />
                     </Routes>
                 </main>
             </Router>
