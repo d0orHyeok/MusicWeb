@@ -29,8 +29,10 @@
     color: var(--color-5);
     text-decoration: none;
     margin: 1rem;
+    transition: 0.1s;
 }
 
 .nav-link:hover {
+    cursor: pointer;
     border-bottom: 2px solid var(--color-5);
 }

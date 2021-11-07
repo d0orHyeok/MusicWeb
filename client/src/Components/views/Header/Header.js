@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ChangingNav from './Sections/ChangingNav';
 
 import classNames from 'classnames/bind';
 import styles from './Header.module.css';
@@ -21,16 +22,7 @@ function Header() {
                             Playlists
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/register" className={cx('nav-link')}>
-                            Sing Up
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/login" className={cx('nav-link')}>
-                            Sing In
-                        </Link>
-                    </li>
+                    <ChangingNav />
                 </ul>
             </nav>
         </header>
