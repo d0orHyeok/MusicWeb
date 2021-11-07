@@ -44,7 +44,12 @@ function ChangingNav() {
         return (
             <React.Fragment>
                 <li>
-                    <a onClick={logoutHandler} href className={cx('nav-link')}>
+                    <Link to="/add" className={cx('nav-link')}>
+                        Add Music
+                    </Link>
+                </li>
+                <li>
+                    <a onClick={logoutHandler} href="/" className={cx('nav-link')}>
                         Logout
                     </a>
                 </li>

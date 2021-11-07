@@ -8,6 +8,7 @@ import LoginPage from './views/LoginPage/LoginPage';
 import RegisterPage from './views/RegisterPage/RegisterPage';
 import PlaylistsPage from './views/PlaylistsPage/PlaylistsPage';
 import Notfound from './views/Common/Notfound';
+import AddMusicPage from './views/AddMusicPage.js/AddMusicPage';
 
 import './reset.css';
 import './App.css';
@@ -23,6 +24,7 @@ function App() {
                         <Route path="login" element={React.createElement(Auth(LoginPage, false))} />
                         <Route path="register" element={React.createElement(Auth(RegisterPage, false))} />
                         <Route path="playlists" element={React.createElement(Auth(PlaylistsPage, true))} />
+                        <Route path="add" element={React.createElement(Auth(AddMusicPage, true))} />
                         <Route path="*" element={<Notfound />} />
                     </Routes>
                 </main>
