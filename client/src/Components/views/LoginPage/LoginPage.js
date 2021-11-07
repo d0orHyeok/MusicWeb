@@ -34,6 +34,8 @@ function LoginPage() {
         dispatch(loginUser(body)).then(res => {
             if (res.payload.loginSuccess) {
                 navigate('/');
+            } else if (!res.payload.loginSuccess && res.payload.message) {
+                alert(res.payload.message);
             } else {
                 alert('Failed to login');
             }

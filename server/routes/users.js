@@ -29,9 +29,9 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user) {
-            return res.status(204).json({
+            return res.json({
                 loginSuccess: false,
-                message: 'Auth failed, email not found',
+                message: 'Email not found',
             });
         }
 
