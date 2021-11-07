@@ -40,8 +40,6 @@ function AddMusicPage() {
             url: URL,
         };
 
-        console.log(body);
-
         dispatch(addMusic(body)).then(res => {
             if (res.payload.success) {
                 const title = Title;
@@ -49,7 +47,7 @@ function AddMusicPage() {
                 setURL('');
                 setMusican('');
                 if (window.confirm(`Add Music: ${title}\n Do you want to see in Streams?`)) {
-                    navigate('/playlists');
+                    navigate('/streams');
                 }
             } else {
                 alert('Failed to add music!');

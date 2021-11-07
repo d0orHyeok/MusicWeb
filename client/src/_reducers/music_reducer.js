@@ -1,4 +1,4 @@
-import { ADD_MUSIC, GET_MUSICS_MUSIC } from '../_actions/types';
+import { ADD_MUSIC, GET_MUSICS_MUSIC, DELETE_MUSIC } from '../_actions/types';
 
 const user_reducer = (state = {}, action) => {
     switch (action.type) {
@@ -6,6 +6,8 @@ const user_reducer = (state = {}, action) => {
             return { ...state, success: action.payload };
         case GET_MUSICS_MUSIC:
             return { ...state, musics: action.payload };
+        case DELETE_MUSIC:
+            return { ...state, success: action.payload };
         default:
             return state;
     }

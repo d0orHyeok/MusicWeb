@@ -12,6 +12,14 @@ router.post('/add', (req, res) => {
     });
 });
 
+router.post('/deleteMusic', (req, res) => {
+    Music.findOneAndDelete({ writer: req.body.writer, _id: req.body._id }).exec((err, doc) => {
+        if (err) return res.status(400).json({ success: false });
+
+        return res.status(200).json({ success: true, doc });
+    });
+});
+
 router.get('/getMusics', (req, res) => {
     Music.find()
         .populate('writer')
