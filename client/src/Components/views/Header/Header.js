@@ -18,8 +18,8 @@ function Header() {
             <nav>
                 <ul className={cx('nav')}>
                     <li>
-                        <Link to="/playlists" className={cx('nav-link')}>
-                            Playlists
+                        <Link to="/streams" className={cx('nav-link')}>
+                            Streams
                         </Link>
                     </li>
                     <ChangingNav />

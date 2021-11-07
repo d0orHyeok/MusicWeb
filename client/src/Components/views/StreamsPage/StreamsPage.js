@@ -1,7 +1,7 @@
 import React from 'react';
 
 function PlaylistsPage() {
-    return <div>Playlists</div>;
+    return <div>Streams</div>;
 }
 
 export default PlaylistsPage;
