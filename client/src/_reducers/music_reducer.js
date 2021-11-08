@@ -4,10 +4,10 @@ const user_reducer = (state = {}, action) => {
     switch (action.type) {
         case ADD_MUSIC:
             return { ...state, success: action.payload };
-        case GET_MUSICS_MUSIC:
-            return { ...state, musics: action.payload };
         case DELETE_MUSIC:
             return { ...state, success: action.payload };
+        case GET_MUSICS_MUSIC:
+            return { ...state, musics: action.payload };
         default:
             return state;
     }

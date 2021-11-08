@@ -11,20 +11,20 @@ export function addMusic(data) {
     };
 }
 
-export function getMusics(data) {
-    const req = Axios.get(`${MUSIC_SERVER}/getMusics`, data).then(res => res.data);
-
-    return {
-        type: GET_MUSICS_MUSIC,
-        payload: req,
-    };
-}
-
 export function deleteMusic(data) {
     const req = Axios.post(`${MUSIC_SERVER}/deleteMusic`, data).then(res => res.data);
 
     return {
         type: DELETE_MUSIC,
+        payload: req,
+    };
+}
+
+export function getMusics(data) {
+    const req = Axios.get(`${MUSIC_SERVER}/getMusics`, data).then(res => res.data);
+
+    return {
+        type: GET_MUSICS_MUSIC,
         payload: req,
     };
 }
