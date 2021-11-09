@@ -85,7 +85,8 @@ function AddMusicPage() {
                             onChange={musicanChangeHandler}
                             value={Musican}
                             type="text"
-                            placeholder="Enter Musician"
+                            placeholder="Enter Musician *"
+                            required
                         />
                         <div className={cx('underline')}></div>
                     </div>

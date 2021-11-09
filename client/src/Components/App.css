@@ -27,10 +27,11 @@ Header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
 }
 
 main {
+    width: 100%;
     position: relative;
     top: var(--header-height);
     height: var(--mainpage-heignt);

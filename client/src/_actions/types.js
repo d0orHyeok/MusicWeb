@@ -5,5 +5,6 @@ export const LOGOUT_USER = 'logout_user';
 export const AUTH_USER = 'auth_user';
 // Music
 export const ADD_MUSIC = 'add_music';
+export const UPDATE_MUSIC = 'update_music';
 export const DELETE_MUSIC = 'delete_music';
 export const GET_MUSICS_MUSIC = 'getMusics_music';
