@@ -96,3 +96,13 @@
     background-color: var(--color-4h);
     cursor: pointer;
 }
+
+.addMusic {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--color-4h);
+}
+
+.addMusic:hover {
+    text-decoration: underline;
+}

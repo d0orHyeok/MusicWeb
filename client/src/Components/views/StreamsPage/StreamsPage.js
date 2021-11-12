@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMusics, deleteMusic } from '../../../_actions/music_action';
+import { Link } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 import styles from './StreamsPage.module.css';
@@ -25,7 +26,7 @@ function PlaylistsPage() {
                 }
             });
         }
-    }, []);
+    }, [user]);
 
     const deleteCard = e => {
         const musicindex = e.target.getAttribute('musicindex');
@@ -37,7 +38,7 @@ function PlaylistsPage() {
             };
 
             dispatch(deleteMusic(body)).then(res => {
-                if (!res.payload.deleteSuccess) {
+                if (!res.payload.success) {
                     alert('Failed to delete music!');
                 }
             });
@@ -80,13 +81,19 @@ function PlaylistsPage() {
 
     return (
         <React.Fragment>
-            {user.id && (
+            {user.isAuth && (
                 <section className={cx('wrapper')}>
-                    <div className={cx('container')}>
-                        <h1 className={cx('title')}>Musics</h1>
-                        <div className={cx('musics')}>{musicCards}</div>
-                    </div>
-                    {IsEdit && <EditMusicPage music={musics[MusicIndex]} setIsEdit={setIsEdit} />}
+                    {musics.length > 0 ? (
+                        <div className={cx('container')}>
+                            <h1 className={cx('title')}>Musics</h1>
+                            <div className={cx('musics')}>{musicCards}</div>
+                            {IsEdit && <EditMusicPage music={musics[MusicIndex]} setIsEdit={setIsEdit} />}
+                        </div>
+                    ) : (
+                        <Link className={cx('addMusic')} to="/add">
+                            Add Music
+                        </Link>
+                    )}
                 </section>
             )}
         </React.Fragment>

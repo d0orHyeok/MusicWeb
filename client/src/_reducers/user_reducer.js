@@ -1,6 +1,6 @@
 import { LOGIN_USER, REGISTER_USER, LOGOUT_USER, AUTH_USER } from '../_actions/types';
 
-const user_reducer = (state = {}, action) => {
+const user_reducer = (state = { userData: { isAuth: false } }, action) => {
     switch (action.type) {
         case LOGIN_USER:
             return { ...state, loginSuccess: action.payload };
