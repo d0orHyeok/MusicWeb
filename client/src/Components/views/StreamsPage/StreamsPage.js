@@ -12,22 +12,18 @@ function PlaylistsPage() {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.user.userData);
+    const musics = useSelector(state => state.music.musics);
 
-    const [Musics, setMusics] = useState([]);
     const [MusicIndex, setMusicIndex] = useState(-1);
     const [IsEdit, setIsEdit] = useState(false);
-    const [IsChange, setIsChange] = useState(false);
 
     useEffect(() => {
         dispatch(getMusics()).then(res => {
-            if (res.payload.success) {
-                setMusics([...res.payload.musics]);
-            } else {
+            if (!res.payload.success) {
                 alert('Failed to get Musics');
             }
         });
-        return setIsChange(false);
-    }, [IsChange]);
+    }, []);
 
     const deleteCard = e => {
         const musicindex = e.target.getAttribute('musicindex');
@@ -35,14 +31,11 @@ function PlaylistsPage() {
         if (window.confirm('Want to delete this music?')) {
             let body = {
                 writer: user._id,
-                _id: Musics[musicindex]._id,
+                _id: musics[musicindex]._id,
             };
 
             dispatch(deleteMusic(body)).then(res => {
-                if (res.payload.success) {
-                    // redux store의 state도 같이 변경시키자
-                    setIsChange(true);
-                } else {
+                if (!res.payload.deleteSuccess) {
                     alert('Failed to delete music!');
                 }
             });
@@ -55,7 +48,7 @@ function PlaylistsPage() {
         setIsEdit(true);
     };
 
-    const musicCards = Musics.map((music, index) => {
+    const musicCards = musics.map((music, index) => {
         return (
             <div className={cx('music')} key={index}>
                 <img
@@ -89,7 +82,7 @@ function PlaylistsPage() {
                 <h1 className={cx('title')}>Musics</h1>
                 <div className={cx('musics')}>{musicCards}</div>
             </div>
-            {IsEdit && <EditMusicPage music={Musics[MusicIndex]} setIsEdit={setIsEdit} setIsChange={setIsChange} />}
+            {IsEdit && <EditMusicPage music={musics[MusicIndex]} setIsEdit={setIsEdit} />}
         </section>
     );
 }

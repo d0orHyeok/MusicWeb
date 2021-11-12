@@ -12,35 +12,27 @@ function EditMusicPage(props) {
 
     const user = useSelector(state => state.user.userData);
 
-    const [Title, setTitle] = useState('');
-    const [URL, setURL] = useState('');
-    const [Musican, setMusican] = useState('');
     const [Music, setMusic] = useState({});
+
+    const { title, url, author } = Music;
 
     useEffect(() => {
         setMusic(props.music);
-        setTitle(Music.title);
-        setURL(Music.url);
-        setMusican(Music.author);
-    }, [Music]);
+    }, []);
 
-    const titleChangeHandler = e => {
-        setTitle(e.currentTarget.value);
-    };
-
-    const urlChangeHandler = e => {
-        setURL(e.currentTarget.value);
-    };
-
-    const musicanChangeHandler = e => {
-        setMusican(e.currentTarget.value);
+    const onChangeHandler = e => {
+        const { name, value } = e.target;
+        setMusic({
+            ...Music,
+            [name]: value,
+        });
     };
 
     const onSubmit = e => {
         e.preventDefault();
 
         if (
-            (props.music.title !== Title || props.music.author !== Musican || props.music.url !== URL) &&
+            (props.music.title !== title || props.music.author !== author || props.music.url !== url) &&
             window.confirm(`Want to edit music?`)
         ) {
             const body = {
@@ -49,16 +41,14 @@ function EditMusicPage(props) {
                     _id: Music._id,
                 },
                 update: {
-                    title: Title,
-                    author: Musican,
-                    url: URL,
+                    title: title,
+                    author: author,
+                    url: url,
                 },
             };
 
             dispatch(updateMusic(body)).then(res => {
-                if (res.payload.success) {
-                    props.setIsChange(true);
-                } else {
+                if (!res.payload.success) {
                     alert('Failed to update music!!');
                 }
             });
@@ -74,8 +64,9 @@ function EditMusicPage(props) {
                     <div className={cx('title')}>Edit Music</div>
                     <div className={cx('input-box')}>
                         <input
-                            onChange={urlChangeHandler}
-                            value={URL}
+                            name="url"
+                            onChange={onChangeHandler}
+                            value={url}
                             type="url"
                             placeholder="Enter Music URL *"
                             required
@@ -84,8 +75,9 @@ function EditMusicPage(props) {
                     </div>
                     <div className={cx('input-box')}>
                         <input
-                            onChange={titleChangeHandler}
-                            value={Title}
+                            name="title"
+                            onChange={onChangeHandler}
+                            value={title}
                             type="text"
                             placeholder="Enter Music Title *"
                             required
@@ -94,8 +86,9 @@ function EditMusicPage(props) {
                     </div>
                     <div className={cx('input-box')}>
                         <input
-                            onChange={musicanChangeHandler}
-                            value={Musican}
+                            name="author"
+                            onChange={onChangeHandler}
+                            value={author}
                             type="text"
                             placeholder="Enter Musician"
                             required

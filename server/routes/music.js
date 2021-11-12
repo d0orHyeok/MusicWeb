@@ -5,25 +5,25 @@ const { Music } = require('../models/Music');
 router.post('/add', (req, res) => {
     const music = new Music(req.body);
 
-    music.save((err, doc) => {
+    music.save((err, music) => {
         if (err) return res.json({ success: false, err });
 
-        return res.status(200).json({ success: true });
+        return res.status(200).json({ success: true, music });
     });
 });
 
 router.post('/updateMusic', (req, res) => {
-    Music.findByIdAndUpdate(req.body.filter, req.body.update).exec((err, doc) => {
+    Music.findByIdAndUpdate(req.body.filter, req.body.update, { new: true }).exec((err, music) => {
         if (err) return res.status(400).json({ success: false });
-        return res.status(200).json({ success: true });
+        return res.status(200).json({ success: true, music });
     });
 });
 
 router.post('/deleteMusic', (req, res) => {
-    Music.findOneAndDelete({ writer: req.body.writer, _id: req.body._id }).exec((err, doc) => {
+    Music.findOneAndDelete({ writer: req.body.writer, _id: req.body._id }).exec((err, music) => {
         if (err) return res.status(400).json({ success: false });
 
-        return res.status(200).json({ success: true });
+        return res.status(200).json({ success: true, music });
     });
 });
 
