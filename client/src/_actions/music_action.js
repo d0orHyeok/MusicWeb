@@ -30,7 +30,7 @@ export function deleteMusic(data) {
 }
 
 export function getMusics(data) {
-    const req = Axios.get(`${MUSIC_SERVER}/getMusics`, data).then(res => res.data);
+    const req = Axios.post(`${MUSIC_SERVER}/getMusics`, data).then(res => res.data);
 
     return {
         type: GET_MUSICS_MUSIC,

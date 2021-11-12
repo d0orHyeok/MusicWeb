@@ -52,6 +52,10 @@ function PlaylistsPage() {
     };
 
     const musicCards = musics.map((music, index) => {
+        if (music.writer === user._id) {
+            console.log(music.writer, user._id);
+        }
+
         return (
             <div className={cx('music')} key={index}>
                 <img
@@ -81,7 +85,7 @@ function PlaylistsPage() {
 
     return (
         <React.Fragment>
-            {user.isAuth && (
+            {user.isAuth && musics && (
                 <section className={cx('wrapper')}>
                     {musics.length > 0 ? (
                         <div className={cx('container')}>

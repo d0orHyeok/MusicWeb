@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Music } = require('../models/Music');
+const { User } = require('../models/User');
 
 router.post('/add', (req, res) => {
     const music = new Music(req.body);
@@ -27,13 +28,11 @@ router.post('/deleteMusic', (req, res) => {
     });
 });
 
-router.get('/getMusics', (req, res) => {
-    Music.find({ writer: req.body.writer })
-        .populate('writer')
-        .exec((err, musics) => {
-            if (err) return res.status(400).send(err);
-            return res.status(200).json({ success: true, musics });
-        });
+router.post('/getMusics', (req, res) => {
+    Music.find({ writer: req.body.writer }).exec((err, musics) => {
+        if (err) return res.status(400).send(err);
+        return res.status(200).json({ success: true, musics });
+    });
 });
 
 module.exports = router;
