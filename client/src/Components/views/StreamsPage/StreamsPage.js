@@ -19,7 +19,7 @@ function PlaylistsPage() {
     const [IsEdit, setIsEdit] = useState(false);
 
     useEffect(() => {
-        if (user._id) {
+        if (user.isAuth) {
             dispatch(getMusics({ writer: user._id })).then(res => {
                 if (!res.payload.success) {
                     alert('Failed to get Musics');
