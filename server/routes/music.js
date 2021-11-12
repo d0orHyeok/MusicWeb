@@ -28,7 +28,7 @@ router.post('/deleteMusic', (req, res) => {
 });
 
 router.get('/getMusics', (req, res) => {
-    Music.find()
+    Music.find(req.body.writer)
         .populate('writer')
         .exec((err, musics) => {
             if (err) return res.status(400).send(err);

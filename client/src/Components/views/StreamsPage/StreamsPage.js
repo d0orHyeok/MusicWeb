@@ -18,11 +18,13 @@ function PlaylistsPage() {
     const [IsEdit, setIsEdit] = useState(false);
 
     useEffect(() => {
-        dispatch(getMusics()).then(res => {
-            if (!res.payload.success) {
-                alert('Failed to get Musics');
-            }
-        });
+        if (user._id) {
+            dispatch(getMusics({ writer: user._id })).then(res => {
+                if (!res.payload.success) {
+                    alert('Failed to get Musics');
+                }
+            });
+        }
     }, []);
 
     const deleteCard = e => {
@@ -77,13 +79,17 @@ function PlaylistsPage() {
     });
 
     return (
-        <section className={cx('wrapper')}>
-            <div className={cx('container')}>
-                <h1 className={cx('title')}>Musics</h1>
-                <div className={cx('musics')}>{musicCards}</div>
-            </div>
-            {IsEdit && <EditMusicPage music={musics[MusicIndex]} setIsEdit={setIsEdit} />}
-        </section>
+        <React.Fragment>
+            {user.id && (
+                <section className={cx('wrapper')}>
+                    <div className={cx('container')}>
+                        <h1 className={cx('title')}>Musics</h1>
+                        <div className={cx('musics')}>{musicCards}</div>
+                    </div>
+                    {IsEdit && <EditMusicPage music={musics[MusicIndex]} setIsEdit={setIsEdit} />}
+                </section>
+            )}
+        </React.Fragment>
     );
 }
 
