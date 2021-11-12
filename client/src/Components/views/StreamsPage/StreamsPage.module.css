@@ -59,7 +59,7 @@
 }
 
 .music:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
     filter: brightness(97%);
 }
 
