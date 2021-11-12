@@ -6,7 +6,6 @@ React를 이용한 간단한 CRUD 웹사이트 입니다.
 
 ## Installation
 
----
 
 ### 서버 설치
 
@@ -31,7 +30,6 @@ npm run dev // 클라이언트 & 서버 실행
 
 ## Description
 
----
 
 ### 메인화면
 
